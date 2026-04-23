@@ -1,0 +1,45 @@
+# Build çıktıları
+bin/
+obj/
+
+# Visual Studio / VS Code
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Rider
+.idea/
+
+# OS dosyaları
+.DS_Store
+Thumbs.db
+
+# Loglar
+*.log
+
+# NuGet
+packages/
+*.nupkg
+
+# SQLite veritabanı (local dosyalar)
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+
+# Entity Framework migrations 
+Migrations/
+
+# App settings 
+appsettings.Development.json
+appsettings.*.json
+appsettings.json
+
+# Publish çıktıları
+publish/
+wwwroot/dist/
+
+# Dotnet tool cache
+.dotnet/
