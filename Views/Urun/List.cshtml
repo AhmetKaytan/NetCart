@@ -9,7 +9,7 @@
 
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-2">
             @foreach(var urun in Model){
-                <div class="col-3">
+                <div class="col">
                     @await Html.PartialAsync("Partials/_UrunKart", urun)
                 </div>
             }

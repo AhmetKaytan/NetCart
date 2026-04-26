@@ -17,7 +17,13 @@ public class UrunController : Controller
     }
     public IActionResult List()
     {
-        List<Urun> urunler = _context.Urunler.ToList();
+        List<Urun> urunler = _context.Urunler.Where(i => i.IsActive).ToList();
         return View(urunler);
+    }
+
+    public IActionResult Details(int id)
+    {
+        var urun = _context.Urunler.FirstOrDefault(p => p.Id == id);
+        return View(urun);
     }
 }

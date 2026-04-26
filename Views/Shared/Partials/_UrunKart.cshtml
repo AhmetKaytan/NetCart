@@ -1,14 +1,14 @@
 @model Urun
 <figure class="card shadow">
-    <a href="details.html" class="img-wrap">
+    <div class="img-wrap">
         <b class="badge bg-success">İndirim</b>
-        <img src="~/img/1.jpeg" alt="@Model.UrunAdi">
-    </a>
+        <img src="~/img/@Model.Resim" alt="@Model.UrunAdi">
+    </div>
     <figcaption class="info-wrap border-top">
-        <a asp-controller="Urun" asp-action="Details" asp-action-id=@Model.Id class="float-end btn btn-light btn-icon">
+        <a href="#" class="float-end btn btn-light btn-icon">
             <i class="fa fa-heart"></i>
         </a>
-        <a href="" class="title text-truncate">
+        <a asp-controller="Urun" asp-action="Details" asp-route-id="@Model.Id" class="title text-truncate">
             @Model.UrunAdi
         </a>
         <div class="price-wrap">
