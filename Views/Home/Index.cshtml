@@ -2,7 +2,53 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="slider pt-3">
+    <div class="container">
+        <main class="card">
+            <div class="row p-lg-2 p-1">
+                <aside class="d-none d-lg-block col-lg-3">
+                    @await Html.PartialAsync("Partials/_Menu")
+                </aside>
+                <div class="col-lg-9">
+                    @await Html.PartialAsync("Partials/_Slider")
+                </div>
+            </div>
+        </main>
+    </div>
+</section>
+
+<section class="pt-3">
+    <div class="container">
+        <header>
+            <h3 class="mb-md-3 mb-0">Son Eklenenler</h3>
+        </header>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                @await Html.PartialAsync("Partials/_UrunKart")
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                @await Html.PartialAsync("Partials/_UrunKart")
+
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                @await Html.PartialAsync("Partials/_UrunKart")
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                @await Html.PartialAsync("Partials/_UrunKart")
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                @await Html.PartialAsync("Partials/_UrunKart")
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                @await Html.PartialAsync("Partials/_UrunKart")
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                @await Html.PartialAsync("Partials/_UrunKart")
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                @await Html.PartialAsync("Partials/_UrunKart")
+            </div>
+        </div>
+    </div>
+</section>
