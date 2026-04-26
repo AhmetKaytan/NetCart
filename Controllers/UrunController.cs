@@ -13,6 +13,10 @@ public class UrunController : Controller
     }
     public IActionResult Index()
     {
+        return View();
+    }
+    public IActionResult List()
+    {
         List<Urun> urunler = _context.Urunler.ToList();
         return View(urunler);
     }

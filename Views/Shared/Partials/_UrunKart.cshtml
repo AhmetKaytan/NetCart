@@ -1,18 +1,19 @@
+@model Urun
 <figure class="card shadow">
     <a href="details.html" class="img-wrap">
         <b class="badge bg-success">İndirim</b>
-        <img src="img/1.jpeg" alt="">
+        <img src="~/img/1.jpeg" alt="@Model.UrunAdi">
     </a>
     <figcaption class="info-wrap border-top">
-        <a href="#" class="float-end btn btn-light btn-icon">
+        <a asp-controller="Urun" asp-action="Details" asp-action-id=@Model.Id class="float-end btn btn-light btn-icon">
             <i class="fa fa-heart"></i>
         </a>
         <a href="" class="title text-truncate">
-            Apple Watch Yıldız Işığı Alüminyum Kasa ve Spor Kordon
+            @Model.UrunAdi
         </a>
         <div class="price-wrap">
-            <span class="price">6.599 TL</span>
-            <del class="price-old">6.999</del>
+            <span class="price">@Model.Fiyat ₺</span>
+            @* <del class="price-old">6.999</del> *@
         </div>
     </figcaption>
 </figure>

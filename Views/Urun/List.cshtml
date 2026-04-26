@@ -1,0 +1,18 @@
+@model List<Urun>
+
+
+<section class="pt-3">
+    <div class="container">
+        <header>
+            <h3 class="mb-md-3 mb-0">Ürün Listesi</h3>
+        </header>
+
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-2">
+            @foreach(var urun in Model){
+                <div class="col-3">
+                    @await Html.PartialAsync("Partials/_UrunKart", urun)
+                </div>
+            }
+        </div>
+    </div>
+</section>
