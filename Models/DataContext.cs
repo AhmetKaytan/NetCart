@@ -10,10 +10,20 @@ public class DataContext : DbContext
     }
     public DbSet<Urun> Urunler { get; set; }
     public DbSet<Kategori> Kategoriler { get; set; }
+    public DbSet<Slider> Sliderlar { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Slider>().HasData(
+            new List<Slider>
+            {
+                new Slider{Id=1,Baslik="Slider1 Başlık", Aciklama="Slider1 Açıklama", Aktif=true,Resim="slider-1.jpeg",Index=0},
+                new Slider{Id=2,Baslik="Slider2 Başlık", Aciklama="Slider2 Açıklama", Aktif=true,Resim="slider-2.jpeg",Index=1},
+                new Slider{Id=3,Baslik="Slider3 Başlık", Aciklama="Slider3 Açıklama", Aktif=true,Resim="slider-3.jpeg",Index=2},
+            }
+        );
 
         modelBuilder.Entity<Kategori>().HasData(
             new List<Kategori>
