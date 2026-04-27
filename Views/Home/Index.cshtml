@@ -8,7 +8,7 @@
         <main class="card">
             <div class="row p-lg-2 p-1">
                 <aside class="d-none d-lg-block col-lg-3">
-                    @await Html.PartialAsync("Partials/_Menu")
+                    @await Html.PartialAsync("Partials/_Menu", ViewData["Kategoriler"])
                 </aside>
                 <div class="col-lg-9">
                     @await Html.PartialAsync("Partials/_Slider")

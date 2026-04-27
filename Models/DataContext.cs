@@ -9,10 +9,27 @@ public class DataContext : DbContext
 
     }
     public DbSet<Urun> Urunler { get; set; }
+    public DbSet<Kategori> Kategoriler { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Kategori>().HasData(
+            new List<Kategori>
+            {
+                new Kategori {Id=1,KategoriAdi="Telefon", Url="telefon"},
+                new Kategori {Id=2,KategoriAdi="Elektronik", Url="elektronik"},
+                new Kategori {Id=3,KategoriAdi="Beyaz Eşya", Url="beyaz-esya"},
+                new Kategori {Id=4,KategoriAdi="Giyim", Url="giyim"},
+                new Kategori {Id=5,KategoriAdi="Kozmetik", Url="kozmetik"},
+                new Kategori {Id=6,KategoriAdi="Kategori 1", Url="kategori-1"},
+                new Kategori {Id=7,KategoriAdi="Kategori 2", Url="kategori-2"},
+                new Kategori {Id=8,KategoriAdi="Kategori 3", Url="kategori-3"},
+                new Kategori {Id=9,KategoriAdi="Kategori 4", Url="kategori-4"},
+                new Kategori {Id=10,KategoriAdi="Kategori 5", Url="kategori-5"},
+            }
+        );
 
         modelBuilder.Entity<Urun>().HasData(
             new List<Urun>
@@ -24,7 +41,8 @@ public class DataContext : DbContext
                     IsActive=true,
                     Resim="1.jpeg",
                     Aciklama="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel officiis, eos ex cumque sapiente praesentium placeat facilis quam laborum veritatis? Incidunt a ex voluptas aliquam, voluptatibus temporibus exercitationem mollitia nisi.",
-                    Anasayfa= true
+                    Anasayfa= true,
+                    KategoriId=1
                 },
                 new Urun(){
                     Id = 2,
@@ -33,7 +51,8 @@ public class DataContext : DbContext
                     IsActive=true,
                     Resim="2.jpeg",
                     Aciklama="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel officiis, eos ex cumque sapiente praesentium placeat facilis quam laborum veritatis? Incidunt a ex voluptas aliquam, voluptatibus temporibus exercitationem mollitia nisi.",
-                    Anasayfa= true
+                    Anasayfa= true,
+                    KategoriId=1
                 },
                 new Urun(){
                     Id = 3,
@@ -42,7 +61,8 @@ public class DataContext : DbContext
                     IsActive=true,
                     Resim="3.jpeg",
                     Aciklama="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel officiis, eos ex cumque sapiente praesentium placeat facilis quam laborum veritatis? Incidunt a ex voluptas aliquam, voluptatibus temporibus exercitationem mollitia nisi.",
-                    Anasayfa= true
+                    Anasayfa= true,
+                    KategoriId=2
                 },
                 new Urun(){
                     Id = 4,
@@ -51,7 +71,8 @@ public class DataContext : DbContext
                     IsActive=true,
                     Resim="4.jpeg",
                     Aciklama="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel officiis, eos ex cumque sapiente praesentium placeat facilis quam laborum veritatis? Incidunt a ex voluptas aliquam, voluptatibus temporibus exercitationem mollitia nisi.",
-                    Anasayfa= false
+                    Anasayfa= false,
+                    KategoriId=2
                 },
                 new Urun(){
                     Id = 5,
@@ -60,7 +81,8 @@ public class DataContext : DbContext
                     IsActive=true,
                     Resim="5.jpeg",
                     Aciklama="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel officiis, eos ex cumque sapiente praesentium placeat facilis quam laborum veritatis? Incidunt a ex voluptas aliquam, voluptatibus temporibus exercitationem mollitia nisi.",
-                    Anasayfa= true
+                    Anasayfa= true,
+                    KategoriId=2
                 },
                 new Urun(){
                     Id = 6,
@@ -69,7 +91,8 @@ public class DataContext : DbContext
                     IsActive=false,
                     Resim="6.jpeg",
                     Aciklama="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel officiis, eos ex cumque sapiente praesentium placeat facilis quam laborum veritatis? Incidunt a ex voluptas aliquam, voluptatibus temporibus exercitationem mollitia nisi.",
-                    Anasayfa= false
+                    Anasayfa= false,
+                    KategoriId=3
                 },
                 new Urun(){
                     Id = 7,
@@ -78,7 +101,8 @@ public class DataContext : DbContext
                     IsActive=false,
                     Resim="7.jpeg",
                     Aciklama="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel officiis, eos ex cumque sapiente praesentium placeat facilis quam laborum veritatis? Incidunt a ex voluptas aliquam, voluptatibus temporibus exercitationem mollitia nisi.",
-                    Anasayfa= false
+                    Anasayfa= false,
+                    KategoriId=3
                 },
                 new Urun(){
                     Id = 8,
@@ -87,7 +111,8 @@ public class DataContext : DbContext
                     IsActive=true,
                     Resim="8.jpeg",
                     Aciklama="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel officiis, eos ex cumque sapiente praesentium placeat facilis quam laborum veritatis? Incidunt a ex voluptas aliquam, voluptatibus temporibus exercitationem mollitia nisi.",
-                    Anasayfa= true
+                    Anasayfa= true,
+                    KategoriId=4
                 },
             }
         );

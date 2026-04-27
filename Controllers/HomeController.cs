@@ -16,6 +16,7 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         var urunler = _context.Urunler.Where(p => p.IsActive && p.Anasayfa).ToList();
+        ViewData["Kategoriler"] = _context.Kategoriler.ToList();
         return View(urunler);
     }
 

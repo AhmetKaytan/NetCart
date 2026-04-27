@@ -9,4 +9,6 @@ public class Urun
     public string? Aciklama { get; set; }
     public bool IsActive { get; set; }
     public bool Anasayfa { get; set; }
+    public int KategoriId { get; set; }
+    public Kategori Kategori { get; set; } = null!;
 }
