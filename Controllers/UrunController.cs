@@ -15,15 +15,25 @@ public class UrunController : Controller
     {
         return View();
     }
-    public IActionResult List()
+    public IActionResult List(string url)
     {
-        List<Urun> urunler = _context.Urunler.Where(i => i.IsActive).ToList();
+        List<Urun> urunler = _context.Urunler.Where(i => i.IsActive && i.Kategori.Url == url).ToList();
         return View(urunler);
     }
 
     public IActionResult Details(int id)
     {
         var urun = _context.Urunler.FirstOrDefault(p => p.Id == id);
+
+        if (urun == null)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
+        ViewData["BenzerUrunler"] = _context.Urunler
+                                    .Where(i => i.IsActive && i.KategoriId == urun.KategoriId && i.Id != id)
+                                    .Take(4)
+                                    .ToList();
         return View(urun);
     }
 }
