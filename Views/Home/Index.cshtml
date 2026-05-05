@@ -8,7 +8,7 @@
         <main class="card">
             <div class="row p-lg-2 p-1">
                 <aside class="d-none d-lg-block col-lg-3">
-                    @await Html.PartialAsync("Partials/_Menu", ViewData["Kategoriler"])
+                    @await Html.PartialAsync("Partials/Site/_Menu", ViewData["Kategoriler"])
                 </aside>
                 <div class="col-lg-9">
                     @await Component.InvokeAsync("Slider")
@@ -27,7 +27,7 @@
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-2">
             @foreach(var urun in Model){
                 <div class="col">
-                    @await Html.PartialAsync("Partials/_UrunKart", urun)
+                    @await Html.PartialAsync("Partials/Site/_UrunKart", urun)
                 </div>
             }
         </div>

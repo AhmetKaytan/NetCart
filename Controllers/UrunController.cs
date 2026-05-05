@@ -15,10 +15,20 @@ public class UrunController : Controller
     {
         return View();
     }
-    public IActionResult List(string url)
+    public IActionResult List(string url, string q)
     {
-        List<Urun> urunler = _context.Urunler.Where(i => i.IsActive && i.Kategori.Url == url).ToList();
-        return View(urunler);
+        var query = _context.Urunler.Where(i => i.IsActive);
+
+        if (!string.IsNullOrEmpty(url))
+        {
+            query = query.Where(i => i.Kategori.Url == url);
+        }
+        if (!string.IsNullOrEmpty(q))
+        {
+            query = query.Where(i => i.UrunAdi.ToLower().Contains(q.ToLower()));
+        }
+        ViewData["q"] = q;
+        return View(query.ToList());
     }
 
     public IActionResult Details(int id)

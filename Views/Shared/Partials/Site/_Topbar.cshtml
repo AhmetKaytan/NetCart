@@ -4,7 +4,7 @@
             <div class="col-lg-2 col-sm-4 col-4">
                 <a href="/" class="navbar-brand">
                     <i class="fa-solid fa-truck-fast"></i>
-                    E-Ticaret
+                    Dotnet Store
                 </a>
             </div>
             <div class="order-lg-last col-lg-5 col-sm-8 col-8">
@@ -21,10 +21,10 @@
                 </div>
             </div>
             <div class="col-lg-5">
-                <form>
+                <form asp-controller="Urun" asp-action="List" method="get">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Anahtar Kelime">
-                        <button class="btn btn-primary">
+                        <input name="q" type="text" class="form-control" placeholder="Anahtar Kelime" value="@ViewData["q"]">
+                        <button type="submit" class="btn btn-primary">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
