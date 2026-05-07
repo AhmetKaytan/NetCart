@@ -1,5 +1,7 @@
 using dotnet_store.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace dotnet_store.Controllers;
 
@@ -13,7 +15,17 @@ public class UrunController : Controller
     }
     public IActionResult Index()
     {
-        return View();
+        var urunler = _context.Urunler.Select(i => new UrunGetModel
+        {
+            Id = i.Id,
+            UrunAdi = i.UrunAdi,
+            Resim = i.Resim,
+            Fiyat = i.Fiyat,
+            Anasayfa = i.Anasayfa,
+            IsActive = i.IsActive,
+            KategoriAdi = i.Kategori.KategoriAdi
+        }).ToList();
+        return View(urunler);
     }
     public IActionResult List(string url, string q)
     {
@@ -46,4 +58,31 @@ public class UrunController : Controller
                                     .ToList();
         return View(urun);
     }
+
+
+    [HttpGet]
+    public IActionResult Create()
+    {
+        ViewBag.Kategoriler = new SelectList(_context.Kategoriler.ToList(), "Id", "KategoriAdi");
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Create(UrunCreateModel model)
+    {
+        var entity = new Urun
+        {
+            UrunAdi = model.UrunAdi,
+            Aciklama = model.Aciklama,
+            Fiyat = model.Fiyat,
+            IsActive = model.IsActive,
+            Anasayfa = model.Anasayfa,
+            KategoriId = model.KategoriId,
+            Resim = "1.jpeg"
+        };
+        _context.Add(entity);
+        _context.SaveChanges();
+        return RedirectToAction("Index");
+    }
+
 }

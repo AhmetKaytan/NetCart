@@ -32,9 +32,9 @@ public class KategoriController : Controller
     }
 
     [HttpPost]
-    public IActionResult Create(string kategoriAdi, string kategoriUrl)
+    public IActionResult Create(KategoriCreateModel model)
     {
-        var entity = new Kategori { KategoriAdi = kategoriAdi, Url = kategoriUrl };
+        var entity = new Kategori { KategoriAdi = model.KategoriAdi, Url = model.Url };
         _context.Kategoriler.Add(entity);
         _context.SaveChanges();
         return RedirectToAction("Index");
