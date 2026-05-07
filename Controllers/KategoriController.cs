@@ -24,4 +24,19 @@ public class KategoriController : Controller
         }).ToList();
         return View(kategoriler);
     }
+
+    [HttpGet]
+    public IActionResult Create()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Create(string kategoriAdi, string kategoriUrl)
+    {
+        var entity = new Kategori { KategoriAdi = kategoriAdi, Url = kategoriUrl };
+        _context.Kategoriler.Add(entity);
+        _context.SaveChanges();
+        return RedirectToAction("Index");
+    }
 }
