@@ -2,8 +2,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace dotnet_store.Models;
 
-public class UrunCreateModel
+public class UrunEditModel
 {
+    public int Id { get; set; }
     [Display(Name = "Ürün Adı")]
     public string UrunAdi { get; set; } = null!;
 
@@ -11,7 +12,8 @@ public class UrunCreateModel
     public double Fiyat { get; set; }
 
     [Display(Name = "Ürün Resmi")]
-    public IFormFile? Resim { get; set; }
+    public string? ResimAdi { get; set; }
+    public IFormFile? ResimDosya { get; set; }
 
     [Display(Name = "Ürün Açıklaması")]
     public string? Aciklama { get; set; }
