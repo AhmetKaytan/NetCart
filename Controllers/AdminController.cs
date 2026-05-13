@@ -5,12 +5,7 @@ namespace dotnet_store.Controllers;
 
 public class AdminController : Controller
 {
-    private readonly DataContext _context;
 
-    public AdminController(DataContext context)
-    {
-        _context = context;
-    }
 
     public IActionResult Index()
     {
