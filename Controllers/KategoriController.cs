@@ -34,10 +34,15 @@ public class KategoriController : Controller
     [HttpPost]
     public IActionResult Create(KategoriCreateModel model)
     {
-        var entity = new Kategori { KategoriAdi = model.KategoriAdi, Url = model.Url };
-        _context.Kategoriler.Add(entity);
-        _context.SaveChanges();
-        return RedirectToAction("Index");
+        if (ModelState.IsValid)
+        {
+            var entity = new Kategori { KategoriAdi = model.KategoriAdi, Url = model.Url };
+            _context.Kategoriler.Add(entity);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        return View(model);
+
     }
 
     public IActionResult Edit(int id)
@@ -54,21 +59,64 @@ public class KategoriController : Controller
     [HttpPost]
     public IActionResult Edit(int id, KategoriEditModel model)
     {
-        if (id != model.Id)
+        if (ModelState.IsValid)
         {
-            return NotFound();
-        }
-        var entity = _context.Kategoriler.FirstOrDefault(i => i.Id == model.Id);
-        if (entity != null)
-        {
-            entity.KategoriAdi = model.KategoriAdi;
-            entity.Url = model.Url;
+            if (id != model.Id)
+            {
+                return NotFound();
+            }
+            var entity = _context.Kategoriler.FirstOrDefault(i => i.Id == model.Id);
+            if (entity != null)
+            {
+                entity.KategoriAdi = model.KategoriAdi;
+                entity.Url = model.Url;
 
-            _context.SaveChanges();
+                _context.SaveChanges();
 
-            TempData["Mesaj"] = $"{entity.KategoriAdi} kategorisi güncellendi";
-            return RedirectToAction("Index");
+                TempData["Mesaj"] = $"{entity.KategoriAdi} kategorisi güncellendi";
+                return RedirectToAction("Index");
+            }
         }
+
         return View(model);
     }
+
+
+    public IActionResult Delete(int? id)
+    {
+        if (id == null)
+        {
+            return RedirectToAction("Index");
+        }
+        var entity = _context.Kategoriler.FirstOrDefault(i => i.Id == id);
+
+        if (entity != null)
+        {
+            return View(entity);
+
+        }
+        return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public IActionResult DeleteConfirm(int? id)
+    {
+        if (id == null)
+        {
+            return RedirectToAction("Index");
+        }
+        var entity = _context.Kategoriler.FirstOrDefault(i => i.Id == id);
+
+        if (entity != null)
+        {
+            _context.Kategoriler.Remove(entity);
+            _context.SaveChanges();
+
+            TempData["Mesaj"] = $"{entity.KategoriAdi} kategorisi silindi";
+
+        }
+        return RedirectToAction("Index");
+    }
+
+
 }

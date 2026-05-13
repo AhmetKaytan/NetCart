@@ -13,55 +13,78 @@
                 </a>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-striped mb-0">
-                        <thead class="table-secondary">
-                            <tr>
-                                <th style="width: 20px">ID</th>
-                                <th style="width: 80px">Resim</th>
-                                <th>Ürün Adı</th>
-                                <th>Fiyat</th>
-                                <th>Aktiflik</th>
-                                <th>Anasayfa</th>
-                                <th>Kategori</th>
-                                <th style="width: 50px"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach(var u in Model)
-                            {
+
+                <form action="" method="get">
+                    <div class="input-group mb-2">
+                        <select name="kategori" class="form-select" asp-items="ViewBag.Kategoriler">
+                            <option value="" selected>Hepsi</option>
+                        </select>
+                        <button class="btn btn-secondary" type="submit">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+
+                </form>
+
+                @if(Model.Count == 0){
+                    <div class="text-center">
+                        <p class="text-danger mb-3">Ürün bulunamadı</p>
+                    </div>
+                }
+                else{
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped mb-0">
+                            <thead class="table-secondary">
                                 <tr>
-                                    <td>@u.Id</td>
-                                    <td><img src="img/@u.Resim" class="img-fluid" alt="" /></td>
-                                    <td>@u.UrunAdi</td>
-                                    <td>@u.Fiyat ₺</td>
-                                    <td>
-                                        @if(u.IsActive){
-                                            <i class="fa-solid fa-circle-check text-success"></i>
-                                        }
-                                        else{
-                                            <i class="fa-solid fa-circle-xmark text-danger"></i>
-                                        }
-                                    </td>
-                                    <td>
-                                        @if(u.Anasayfa){
-                                            <i class="fa-solid fa-circle-check text-success"></i>
-                                        }
-                                        else{
-                                            <i class="fa-solid fa-circle-xmark text-danger"></i>
-                                        }
-                                    </td>
-                                    <td>@u.KategoriAdi</td>
-                                    <td>
-                                        <a asp-controller="Urun" asp-action="Edit" asp-route-id="@u.Id" class="btn btn-primary btn-sm">
-                                            <i class="fa-solid fa-pen-to-square"></i>
-                                        </a>
-                                    </td>
+                                    <th style="width: 20px">ID</th>
+                                    <th style="width: 80px">Resim</th>
+                                    <th>Ürün Adı</th>
+                                    <th>Fiyat</th>
+                                    <th>Aktiflik</th>
+                                    <th>Anasayfa</th>
+                                    <th>Kategori</th>
+                                    <th style="width: 95px"></th>
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
+                            </thead>
+                            <tbody>
+                                @foreach(var u in Model)
+                                {
+                                    <tr>
+                                        <td>@u.Id</td>
+                                        <td><img src="img/@u.Resim" class="img-fluid" alt="" /></td>
+                                        <td>@u.UrunAdi</td>
+                                        <td>@u.Fiyat ₺</td>
+                                        <td>
+                                            @if(u.IsActive){
+                                                <i class="fa-solid fa-circle-check text-success"></i>
+                                            }
+                                            else{
+                                                <i class="fa-solid fa-circle-xmark text-danger"></i>
+                                            }
+                                        </td>
+                                        <td>
+                                            @if(u.Anasayfa){
+                                                <i class="fa-solid fa-circle-check text-success"></i>
+                                            }
+                                            else{
+                                                <i class="fa-solid fa-circle-xmark text-danger"></i>
+                                            }
+                                        </td>
+                                        <td>@u.KategoriAdi</td>
+                                        <td>
+                                            <a asp-controller="Urun" asp-action="Edit" asp-route-id="@u.Id" class="btn btn-primary btn-sm">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </a>
+                                            <a asp-controller="Urun" asp-action="Delete" asp-route-id="@u.Id" class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
             </div>
         </div>
     </div>
